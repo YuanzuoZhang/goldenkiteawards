@@ -32,7 +32,7 @@
     }
     /* 固定宽度容器，只显示约10个年份，隐藏滚动条 */
     .year-list-container {
-      width: 1000px;  /* 根据需要调整，此处约可显示10个链接 */
+      width: 1000px;  /* 根据需要调整，确保只显示约10个链接 */
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
@@ -84,7 +84,7 @@
   </header>
 
   <!-- Hero 大图 -->
-  <section class="hero">
+  <section class="hero" style="background: url('GKA46Banner.JPG') center/cover no-repeat;">
     <div class="overlay">
       <h2>历届入围与得奖名单</h2>
       <p>见证华语电影的辉煌历程</p>
@@ -306,21 +306,25 @@
         });
       });
       
-      // 默认显示第1届
+      // 默认显示最后一届（第46届）
       if(yearLinks.length > 0) {
-        yearLinks[0].click();
+        var lastIndex = yearLinks.length - 1;
+        yearLinks[lastIndex].click();
+        // 滚动容器到最右边
+        var yearListContainer = document.querySelector(".year-list-container");
+        yearListContainer.scrollLeft = yearListContainer.scrollWidth;
       }
       
-      // 左右按钮控制滑块滚动
+      // 左右按钮控制滑块滚动，每次滚动约一个年份的宽度（假设100px，可根据实际情况调整）
       var prevBtn = document.querySelector(".prev-btn");
       var nextBtn = document.querySelector(".next-btn");
       var yearListContainer = document.querySelector(".year-list-container");
       
       prevBtn.addEventListener("click", function(){
-        yearListContainer.scrollLeft -= 100; // 每次滚动100px，可根据需要调整
+        yearListContainer.scrollBy({ left: -100, behavior: 'smooth' });
       });
       nextBtn.addEventListener("click", function(){
-        yearListContainer.scrollLeft += 100;
+        yearListContainer.scrollBy({ left: 100, behavior: 'smooth' });
       });
     });
   </script>
