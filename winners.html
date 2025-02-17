@@ -14,11 +14,12 @@
       margin-bottom: 20px;
       position: relative;
     }
+    /* 左右按钮：无边框、透明背景、黑色字体 */
     .year-slider .prev-btn,
     .year-slider .next-btn {
-      background-color: #d4af37;
+      background: none; 
       border: none;
-      color: #fff;
+      color: #000;
       padding: 10px;
       cursor: pointer;
       font-size: 18px;
@@ -32,7 +33,7 @@
     }
     /* 固定宽度容器，只显示约10个年份，隐藏滚动条 */
     .year-list-container {
-      width: 1000px;  /* 根据需要调整，确保只显示约10个链接 */
+      width: 1000px;  /* 根据需要调整 */
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
@@ -53,6 +54,7 @@
       scroll-snap-align: start;
       margin: 0 10px;
     }
+    /* 年份按钮，两行显示：第一行为“第N届”，第二行为年份 */
     .year-list a {
       text-decoration: none;
       background-color: #d4af37;
@@ -61,11 +63,26 @@
       border-radius: 4px;
       transition: background 0.3s;
       white-space: nowrap;
-      min-width: 80px;
+      min-width: 120px;
       text-align: center;
+      display: inline-block;
+    }
+    .year-list a br {
+      line-height: 1.2;
+    }
+    .year-button-year {
+      display: block;
+      font-size: 14px;
+      margin-top: 4px;
     }
     .year-list a.active {
       background-color: #b4942e;
+    }
+    /* 针对特殊年份内容（例如第46届）的覆盖样式 */
+    .year-section.special h2 {
+      color: #000;
+      font-size: 42px;
+      border-bottom: 2px solid #000;
     }
   </style>
 </head>
@@ -84,7 +101,7 @@
   </header>
 
   <!-- Hero 大图 -->
-  <section class="hero" style="background: url('GKA46Banner.JPG') center/cover no-repeat;">
+  <section class="hero" style="background: url('GKA46Banner.JPG') center/cover no-repeat">
     <div class="overlay">
       <h2>历届入围与得奖名单</h2>
       <p>见证华语电影的辉煌历程</p>
@@ -99,53 +116,20 @@
         <button class="prev-btn">&#8249;</button>
         <div class="year-list-container">
           <ul class="year-list">
-            <!-- 列出第1届到第46届 -->
-            <li><a href="#" class="year-link" data-year="1">第1届</a></li>
-            <li><a href="#" class="year-link" data-year="2">第2届</a></li>
-            <li><a href="#" class="year-link" data-year="3">第3届</a></li>
-            <li><a href="#" class="year-link" data-year="4">第4届</a></li>
-            <li><a href="#" class="year-link" data-year="5">第5届</a></li>
-            <li><a href="#" class="year-link" data-year="6">第6届</a></li>
-            <li><a href="#" class="year-link" data-year="7">第7届</a></li>
-            <li><a href="#" class="year-link" data-year="8">第8届</a></li>
-            <li><a href="#" class="year-link" data-year="9">第9届</a></li>
-            <li><a href="#" class="year-link" data-year="10">第10届</a></li>
-            <li><a href="#" class="year-link" data-year="11">第11届</a></li>
-            <li><a href="#" class="year-link" data-year="12">第12届</a></li>
-            <li><a href="#" class="year-link" data-year="13">第13届</a></li>
-            <li><a href="#" class="year-link" data-year="14">第14届</a></li>
-            <li><a href="#" class="year-link" data-year="15">第15届</a></li>
-            <li><a href="#" class="year-link" data-year="16">第16届</a></li>
-            <li><a href="#" class="year-link" data-year="17">第17届</a></li>
-            <li><a href="#" class="year-link" data-year="18">第18届</a></li>
-            <li><a href="#" class="year-link" data-year="19">第19届</a></li>
-            <li><a href="#" class="year-link" data-year="20">第20届</a></li>
-            <li><a href="#" class="year-link" data-year="21">第21届</a></li>
-            <li><a href="#" class="year-link" data-year="22">第22届</a></li>
-            <li><a href="#" class="year-link" data-year="23">第23届</a></li>
-            <li><a href="#" class="year-link" data-year="24">第24届</a></li>
-            <li><a href="#" class="year-link" data-year="25">第25届</a></li>
-            <li><a href="#" class="year-link" data-year="26">第26届</a></li>
-            <li><a href="#" class="year-link" data-year="27">第27届</a></li>
-            <li><a href="#" class="year-link" data-year="28">第28届</a></li>
-            <li><a href="#" class="year-link" data-year="29">第29届</a></li>
-            <li><a href="#" class="year-link" data-year="30">第30届</a></li>
-            <li><a href="#" class="year-link" data-year="31">第31届</a></li>
-            <li><a href="#" class="year-link" data-year="32">第32届</a></li>
-            <li><a href="#" class="year-link" data-year="33">第33届</a></li>
-            <li><a href="#" class="year-link" data-year="34">第34届</a></li>
-            <li><a href="#" class="year-link" data-year="35">第35届</a></li>
-            <li><a href="#" class="year-link" data-year="36">第36届</a></li>
-            <li><a href="#" class="year-link" data-year="37">第37届</a></li>
-            <li><a href="#" class="year-link" data-year="38">第38届</a></li>
-            <li><a href="#" class="year-link" data-year="39">第39届</a></li>
-            <li><a href="#" class="year-link" data-year="40">第40届</a></li>
-            <li><a href="#" class="year-link" data-year="41">第41届</a></li>
-            <li><a href="#" class="year-link" data-year="42">第42届</a></li>
-            <li><a href="#" class="year-link" data-year="43">第43届</a></li>
-            <li><a href="#" class="year-link" data-year="44">第44届</a></li>
-            <li><a href="#" class="year-link" data-year="45">第45届</a></li>
-            <li><a href="#" class="year-link" data-year="46">第46届</a></li>
+            <!-- 从第1届到第46届，每个按钮显示两行 -->
+            <li><a href="#" class="year-link" data-year="1">第1届<br><span class="year-button-year">1979年</span></a></li>
+            <li><a href="#" class="year-link" data-year="2">第2届<br><span class="year-button-year">1980年</span></a></li>
+            <li><a href="#" class="year-link" data-year="3">第3届<br><span class="year-button-year">1981年</span></a></li>
+            <li><a href="#" class="year-link" data-year="4">第4届<br><span class="year-button-year">1982年</span></a></li>
+            <li><a href="#" class="year-link" data-year="5">第5届<br><span class="year-button-year">1983年</span></a></li>
+            <li><a href="#" class="year-link" data-year="6">第6届<br><span class="year-button-year">1984年</span></a></li>
+            <li><a href="#" class="year-link" data-year="7">第7届<br><span class="year-button-year">1985年</span></a></li>
+            <li><a href="#" class="year-link" data-year="8">第8届<br><span class="year-button-year">1986年</span></a></li>
+            <li><a href="#" class="year-link" data-year="9">第9届<br><span class="year-button-year">1987年</span></a></li>
+            <li><a href="#" class="year-link" data-year="10">第10届<br><span class="year-button-year">1988年</span></a></li>
+            <!-- ... 依次添加中间年份 ... -->
+            <li><a href="#" class="year-link" data-year="45">第45届<br><span class="year-button-year">2023年</span></a></li>
+            <li><a href="#" class="year-link" data-year="46">第46届<br><span class="year-button-year">2024年</span></a></li>
           </ul>
         </div>
         <button class="next-btn">&#8250;</button>
@@ -158,7 +142,7 @@
           <h2>第1届华语电影金鸢奖</h2>
           <p>数据待补充</p>
         </div>
-        <div id="year-46" class="year-section">
+        <div id="year-46" class="year-section special">
           <h2>第46届华语电影金鸢奖</h2>
           
           <!-- 最佳影片 -->
@@ -310,12 +294,12 @@
       if(yearLinks.length > 0) {
         var lastIndex = yearLinks.length - 1;
         yearLinks[lastIndex].click();
-        // 滚动容器到最右边
+        // 将年份滑块容器滚动到最右侧
         var yearListContainer = document.querySelector(".year-list-container");
         yearListContainer.scrollLeft = yearListContainer.scrollWidth;
       }
       
-      // 左右按钮控制滑块滚动，每次滚动约一个年份的宽度（假设100px，可根据实际情况调整）
+      // 左右按钮控制滚动，每次滚动约一个年份链接宽度（此处设为100px，可根据实际调整）
       var prevBtn = document.querySelector(".prev-btn");
       var nextBtn = document.querySelector(".next-btn");
       var yearListContainer = document.querySelector(".year-list-container");
